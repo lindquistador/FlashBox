@@ -3,8 +3,6 @@
 {% block content %}
   <h1>HackRU's debut opening of FlashBox</h1>
   
-  <hr class="featurette-divider">
-  
   <div id="upload">
     <p class="lead">Upload a word document here: </p>  
     <form action="/" method="post">
