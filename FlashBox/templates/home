@@ -2,4 +2,8 @@
 
 {% block content %}
   <h1>HackRU's debut opening of FlashBox</h1>
+  <div class="upload">
+    <p class="lead">Upload a document here: </p>
+
+  </div>
 {% endblock %}

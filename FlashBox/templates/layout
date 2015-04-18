@@ -10,7 +10,8 @@
   {% load staticfiles %}
   <link rel="stylesheet" href="{% static "css/style.css" %}">
   <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
-  
+  <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
   <!--[if IE]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
@@ -19,14 +20,14 @@
 <body>
 
   {% include "navigation" %}
-
+  
   <div class="container">
     {% block content %}
     {% endblock %}
   </div>
-
+    
   {% include "footer" %}
-
+  
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script src="{% static "js/bootstrap.min.js" %}"></script>
 </body>
