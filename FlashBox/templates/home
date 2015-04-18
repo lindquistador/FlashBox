@@ -2,11 +2,42 @@
 
 {% block content %}
   <h1>HackRU's debut opening of FlashBox</h1>
-  <div class="upload">
-    <p class="lead">Upload a document here: </p>
+  
+  <hr class="featurette-divider">
+  
+  <div id="upload">
+    <p class="lead">Upload a word document here: </p>  
     <form action="/" method="post">
-      {{ form.as_p }}
-      <input type="submit" value="submit"/>
+      
+      <div class="row">
+        <div class="col-xs-12 col-md-6">
+        {% for field in form %}
+        <div class="row">
+          <div class="col-sm-6">
+            {{ field.label_tag }}
+          </div>
+          <div class="col-sm-6">
+            {{ field }}
+          </div>
+        </div>
+        {% endfor %}
+        </div>
+        
+      </div>
+      
+      <div class="row">
+        <input type="submit" value="submit"/>
+      </div>
+
     </form>
+  </div>
+
+  <hr class="featurette-divider">
+
+  <div id="about">
+    <h2>About</h2>
+    <p class="lead">
+      <!-- TODO -->
+    </p>
   </div>
 {% endblock %}

@@ -1,5 +1,4 @@
 /* sticky footer */
-
 html {
   position: relative;
   min-height: 100%;
@@ -25,5 +24,12 @@ footer {
 .container .text-muted {
   margin: 20px 0;
 }
+.navbar-static-top {
+  margin-bottom: 19px;
+}
 
 /* custom CSS */
+
+#content, #upload, #about {
+  margin-top: 50px;
+}
