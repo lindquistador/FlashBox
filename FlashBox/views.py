@@ -28,3 +28,7 @@ def view_cards(request, url):
         url which corresponds to their cards and
         renders them. """
     pass
+
+def handle_uploaded_file(post):
+    """ Handles parsing of file and uploading to database """
+    
