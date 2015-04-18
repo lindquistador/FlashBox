@@ -1,4 +1,4 @@
-{% extends "templates/layout" %}
+{% extends "layout" %}
 
 {% block content %}
   <h1>HackRU's debut opening of FlashBox</h1>
