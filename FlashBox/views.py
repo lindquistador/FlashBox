@@ -31,3 +31,4 @@ def view_cards(request, url):
 
 def handle_uploaded_file(post):
     """ Handles parsing of file and uploading to database """
+    pass

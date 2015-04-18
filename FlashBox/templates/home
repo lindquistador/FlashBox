@@ -3,8 +3,6 @@
 {% block content %}
   <h1>HackRU's debut opening of FlashBox</h1>
   
-  <hr class="featurette-divider">
-  
   <div id="upload">
     <p class="lead">Upload a word document here: </p>  
     <form action="/" method="post">
@@ -39,7 +37,7 @@
     <p class="lead">
       <!-- TODO -->
       FlashBox provides an easy way of quickly formatting your document of vocabulary words to automatically generate flash cards.  Simply follow the annotation method, and FlashBox does the parsing.
-      Then click on the link generated and view information in the traditional index card format.  Future features will include a way viewing multiple sets of flashcards and a method downloading the 
+      Then click on the link generated and view information in the traditional index card format.  Future features will include a way of viewing multiple sets of flashcards and a method for downloading the 
       flashcards.
     </p>
   </div>

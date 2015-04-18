@@ -5,8 +5,9 @@ from django.conf.urls import patterns, include, url
 # admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Examples:
     url(r'^$', 'FlashBox.views.home', name='home'),
+
+    # we will match every other url with this line
     url(r'^(?P<url>\w', 'FlashBox.views.view_cards', name='view_cards'),
     # url(r'^FlashBox/', include('FlashBox.foo.urls')),
 
