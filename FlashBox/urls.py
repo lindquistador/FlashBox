@@ -7,6 +7,7 @@ from django.conf.urls import patterns, include, url
 urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'FlashBox.views.home', name='home'),
+    url(r'^(?P<url>\w', 'FlashBox.views.view_cards', name='view_cards'),
     # url(r'^FlashBox/', include('FlashBox.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:

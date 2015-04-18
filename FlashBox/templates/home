@@ -4,6 +4,9 @@
   <h1>HackRU's debut opening of FlashBox</h1>
   <div class="upload">
     <p class="lead">Upload a document here: </p>
-
+    <form action="/" method="post">
+      {{ form.as_p }}
+      <input type="submit" value="submit"/>
+    </form>
   </div>
 {% endblock %}
