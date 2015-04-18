@@ -36,6 +36,9 @@
     <h2>About</h2>
     <p class="lead">
       <!-- TODO -->
+      FlashBox provides an easy way of quickly formatting your document of vocabular words to automatically generate flash cards.  Simply follow the annotation method, and FlashBox does the parsing.
+      Simply click on the link generated and view information in the traditional index card format.  Future features will include a way viewing multiple sets of flashcards and a method downloading the 
+      flashcards.
     </p>
   </div>
 {% endblock %}
