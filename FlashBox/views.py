@@ -52,7 +52,11 @@ def handle_uploaded_file(f):
     array = flash(f)
     _title= array[0]
     # just to get a nice url
-    _hash_object = hashlib.md5(b'{0}{1}{2}'.format(_title, array[1][0], array[1][1]))
+
+    f.seek(0, 0)
+    data = "".join(( i for i in f))
+
+    _hash_object = hashlib.md5(b'{}'.format(data))
     _url = _hash_object.hexdigest()
 
     cards = []
