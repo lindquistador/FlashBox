@@ -8,9 +8,9 @@
   <title>{{ title }}</title>
   
   {% load staticfiles %}
-  <link rel="stylesheet" href="{% static "css/style.css" %}">
   <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
   <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="{% static "css/style.css" %}">
 
   <!--[if IE]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>

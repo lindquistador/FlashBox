@@ -2,11 +2,11 @@
 html {
   position: relative;
   min-height: 100%;
-  font-family: Lato;
 }
 body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
+  font-family: Lato !important;
 }
 footer {
   position: absolute;
@@ -14,7 +14,10 @@ footer {
   width: 100%;
   /* Set the fixed height of the footer here */
   height: 60px;
-  background-color: #f5f5f5;
+  background-color: #9b59b6;
+}
+footer p.text-muted {
+  color: #ecf0f1 !important;
 }
 .container {
   width: auto;
@@ -28,8 +31,139 @@ footer {
   margin-bottom: 19px;
 }
 
+/* AUTOMATICALLY GENERATED FOR BUTTONS 
+ * http://work.smarchal.com/twbscolor/css/9b59b68e44adecf0f1ecdbff0 
+ */
+.navbar-default {
+  background-color: #9b59b6;
+  border-color: #8e44ad;
+}
+.navbar-default .navbar-brand {
+  color: #ecf0f1;
+}
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+  color: #ecdbff;
+}
+.navbar-default .navbar-text {
+  color: #ecf0f1;
+}
+.navbar-default .navbar-nav > li > a {
+  color: #ecf0f1;
+}
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+  color: #ecdbff;
+}
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+  color: #ecdbff;
+  background-color: #8e44ad;
+}
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+  color: #ecdbff;
+  background-color: #8e44ad;
+}
+.navbar-default .navbar-toggle {
+  border-color: #8e44ad;
+}
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+  background-color: #8e44ad;
+}
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #ecf0f1;
+}
+.navbar-default .navbar-collapse,
+.navbar-default .navbar-form {
+  border-color: #ecf0f1;
+}
+.navbar-default .navbar-link {
+  color: #ecf0f1;
+}
+.navbar-default .navbar-link:hover {
+  color: #ecdbff;
+}
+
+@media (max-width: 767px) {
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+    color: #ecf0f1;
+  }
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+    color: #ecdbff;
+  }
+  .navbar-default .navbar-nav .open .dropdown-menu > .active > a, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
+    color: #ecdbff;
+    background-color: #8e44ad;
+  }
+}
+
+/* Automatically generated CSS for button colors
+ * http://blog.koalite.com/bbg/
+ */
+.btn-purple { 
+  color: #ECF0F1; 
+  background-color: #9B59B6; 
+  border-color: #8E44AD; 
+} 
+ 
+.btn-purple:hover, 
+.btn-purple:focus, 
+.btn-purple:active, 
+.btn-purple.active, 
+.open .dropdown-toggle.btn-purple { 
+  color: #ECF0F1; 
+  background-color: #ecdbff; 
+  border-color: #8E44AD; 
+} 
+ 
+.btn-purple:active, 
+.btn-purple.active, 
+.open .dropdown-toggle.btn-purple { 
+  background-image: none; 
+} 
+ 
+.btn-purple.disabled, 
+.btn-purple[disabled], 
+fieldset[disabled] .btn-purple, 
+.btn-purple.disabled:hover, 
+.btn-purple[disabled]:hover, 
+fieldset[disabled] .btn-purple:hover, 
+.btn-purple.disabled:focus, 
+.btn-purple[disabled]:focus, 
+fieldset[disabled] .btn-purple:focus, 
+.btn-purple.disabled:active, 
+.btn-purple[disabled]:active, 
+fieldset[disabled] .btn-purple:active, 
+.btn-purple.disabled.active, 
+.btn-purple[disabled].active, 
+fieldset[disabled] .btn-purple.active { 
+  background-color: #9B59B6; 
+  border-color: #8E44AD; 
+} 
+ 
+.btn-purple .badge { 
+  color: #9B59B6; 
+  background-color: #ECF0F1; 
+}
+
 /* custom CSS */
 
 #content, #upload, #about {
   margin-top: 50px;
+}
+
+/* File Upload Button */
+.file_upload {
+  position: relative;
+  overflow: hidden;
+  margin: 10px;
+  margin-right: 30px;
+}
+.file_upload input.upload {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+  filter: alpha(opacity=0);
 }

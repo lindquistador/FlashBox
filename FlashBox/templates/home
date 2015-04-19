@@ -1,30 +1,19 @@
 {% extends "layout" %}
 
 {% block content %}
-  <h1>HackRU's debut opening of FlashBox</h1>
+  <h1>FlashBox</h1>
   
   <div id="upload">
     <p class="lead">Upload a word document here: </p>  
     <form action="/" method="post">
       
       <div class="row">
-        <div class="col-xs-12 col-md-6">
-        {% for field in form %}
-        <div class="row">
-          <div class="col-sm-6">
-            {{ field.label_tag }}
+          <input id="upload_file" placeholder="Choose File" disabled="disabled" />
+          <div class="file_upload btn btn-purple">
+            <span>Upload a File!</span>
+            <input type="{{ form.file.label }}" name="{{ form.file.name }}" id="{{ form.file.auto_id }} upload_btn" class="upload" />
           </div>
-          <div class="col-sm-6">
-            {{ field }}
-          </div>
-        </div>
-        {% endfor %}
-        </div>
-        
-      </div>
-      
-      <div class="row">
-        <input type="submit" value="submit"/>
+          <input class="btn btn-purple" type="submit" value="Submit" id="submit"/>
       </div>
 
     </form>
@@ -35,10 +24,15 @@
   <div id="about">
     <h2>About</h2>
     <p class="lead">
-      <!-- TODO -->
-      FlashBox provides an easy way of quickly formatting your document of vocabulary words to automatically generate flash cards.  Simply follow the annotation method, and FlashBox does the parsing.
-      Then click on the link generated and view information in the traditional index card format.  Future features will include a way of viewing multiple sets of flashcards and a method for downloading the 
-      flashcards.
+      FlashBox provides an easy way of quickly formatting your document of vocabulary words to automatically generate flash cards.  Simply follow the annotation method, and FlashBox does the parsing. Then click on the link generated and view information in the traditional index card format.  Future features will include a way of viewing multiple sets of flashcards and a method for downloading the flashcards.
     </p>
   </div>
+
+  <script type="text/javascript">
+    // for use by our file uploader
+    document.getElementById("upload_btn").onChange = function () {
+      document.getElementById("upload_file").value = this.value;
+    };
+  </script>
+
 {% endblock %}
