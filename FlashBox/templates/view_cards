@@ -4,7 +4,7 @@
   <h1>{{ flash_card_set_title }}</h1>
 
   <!-- default is hidden so we don't see the answers -->
-  <div class="btn btn-default" id="individual_card" visibility="hidden"></div>
+  <div class="btn btn-default" id="individual_card" style="visibility:hidden;"></div>
   
   <div id="cards_view">
    
