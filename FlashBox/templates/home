@@ -5,13 +5,13 @@
   
   <div id="upload">
     <p class="lead">Upload a word document here: </p>  
-    <form action="/" method="post">
+    <form action="/" method="post">{% csrf_token %}
       
       <div class="row">
           <input id="upload_file" placeholder="Choose File" disabled="disabled" />
           <div class="file_upload btn btn-purple">
             <span>Upload a File!</span>
-            <input type="{{ form.file.label }}" name="{{ form.file.name }}" id="{{ form.file.auto_id }} upload_btn" class="upload" />
+            <input type="{{ form.file.label }}" name="{{ form.file.name }}" id="upload_btn" class="upload" />
           </div>
           <input class="btn btn-purple" type="submit" value="Submit" id="submit"/>
       </div>
@@ -30,7 +30,7 @@
 
   <script type="text/javascript">
     // for use by our file uploader
-    document.getElementById("upload_btn").onChange = function () {
+    document.getElementById("upload_btn").onchange = function () {
       document.getElementById("upload_file").value = this.value;
     };
   </script>

@@ -1,5 +1,6 @@
 from django.http import Http404
 from django.shortcuts import render_to_response
+from django.core.context_processors import csrf
 from .forms import UploadFileForm
 
 def handle_uploaded_file(f):
@@ -18,17 +19,15 @@ def home(request):
             return HttpResponseRedirect('/'+url)
     else:
         form = UploadFileForm()
-    return render_to_response('home', {
-            'title': 'FlashBox',
-            'form': form
-        })
+    c = {
+        'title': 'FlashBox',
+        'form': form
+            }
+    c.update(csrf(request))
+    return render_to_response('home', c)
 
 def view_cards(request, url):
     """ Searches the database for a particular
         url which corresponds to their cards and
         renders them. """
-    pass
-
-def handle_uploaded_file(post):
-    """ Handles parsing of file and uploading to database """
     pass
