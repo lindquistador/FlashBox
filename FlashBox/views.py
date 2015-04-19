@@ -2,6 +2,7 @@ from django.http import Http404
 from django.shortcuts import render_to_response
 from django.core.context_processors import csrf
 from django.http import HttpResponseRedirect
+from flashcards.models import Cards, FlashCardSet
 from .forms import UploadFileForm
 from .parsefunc import flash
 
@@ -12,18 +13,16 @@ def home(request):
     """ Handles the home page and the upload handling. """
     if request.method == 'POST':
         form = UploadFileForm(request.POST, request.FILES)
-        print form
         if form.is_valid():
             if not request.FILES['file'].name.endswith(".docx") or \
                not request.FILES['file'].name.endswith(".doc"):
                    # TODO: throw error here
                    pass
             url = handle_uploaded_file(request.FILES['file'])
-            return HttpResponseRedirect('/'+url)
+            return HttpResponseRedirect('/notes/'+url)
         # if failed, form should fall through with custom error
     else:
         form = UploadFileForm()
-        print form
     c = { 'title': 'FlashBox',
           'form': form }
     c.update(csrf(request))
@@ -34,8 +33,14 @@ def view_cards(request, url):
     """ Searches the database for a particular
         url which corresponds to their cards and
         renders them. """
+    flash_card = FlashCardSet.objects(url__contains=url).first()
+    if flash_card == None:
+        # TODO: handle error here
+        pass
+
     c = { 'title': 'View Your Cards',
-          'cards':  None }
+          'flash_card_set_title': flash_card.title,
+          'cards':  flash_card.vocabulary }
     c.update(csrf(request))
     return render_to_response('view_cards', c)
 
@@ -44,14 +49,17 @@ def handle_uploaded_file(f):
         Sends the file to the database after parsing
         and returns the automagically generated url """
 
-
     array = flash(f)
-    counter = 0;
+    _title= array[0]
+    # just to get a nice url
+    _hash_object = hashlib.md5(b'{0}{1}{2}'.format(_title, array[1][0], array[1][1]))
+    _url = _hash_object.hexdigest()
 
-    title = array[0]
+    cards = []
     for i in range(1, len(array)):
-        key = array[i][0]
-        definition = array[i][1]
-       
-    hash_object = hashlib.md5(b'{0}{1}{2}'.format(title, array[1][0], array[1][1]))
-    return hash_object
+        _key, _val = array[i][0], array[i][1]
+        cards.append(Cards(key=_key, info=_val))
+    flash_card = FlashCardSet(title=_title, vocabulary=cards, url=_url)
+    flash_card.save()
+
+    return _url

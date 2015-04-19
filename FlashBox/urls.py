@@ -8,7 +8,7 @@ urlpatterns = patterns('',
     url(r'^$', 'FlashBox.views.home', name='home'),
 
     # we will match every other url with this line
-    url(r'^notes/(?P<url>[a-zA-Z0-9]{32})/$', 'FlashBox.views.view_cards', name='view_cards'),
+    url(r'^notes/(?P<url>[a-f0-9]{32})/$', 'FlashBox.views.view_cards', name='view_cards'),
     # url(r'^FlashBox/', include('FlashBox.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:

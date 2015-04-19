@@ -1,17 +1,11 @@
-from django.db import models
+from mongoengine import *
 
-class Cards(models.Model):
-	Key = models.CharField(max_length=250)
-	Info = models.CharField(max_length=5000)
+class Cards(EmbeddedDocument):
+    key = StringField(max_length=250)
+    info = StringField(max_length=5000)
 
-	def _unicode_(self):
-		return self.Key
-
-class Flashcards(models.Model):
-	Title = models.CharField(max_length=200)
-	Vocabulary = models.ForeignKey(Cards)
-	Url = models.CharField(max_length=32)
-
-	def _unicode_(self):
-		return self.Title
+class FlashCardSet(Document):
+    title = StringField(max_length=200)
+    vocabulary = ListField(EmbeddedDocumentField(Cards))
+    url = StringField(max_length=32)
 
