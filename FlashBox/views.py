@@ -9,7 +9,6 @@ def handle_uploaded_file(f):
         and returns the automagically generated url """
     pass
 
-# TODO: implement csrf?
 def home(request):
     """ Handles the home page and the upload handling. """
     if request.method == 'POST':
@@ -19,15 +18,21 @@ def home(request):
             return HttpResponseRedirect('/'+url)
     else:
         form = UploadFileForm()
-    c = {
-        'title': 'FlashBox',
-        'form': form
-            }
+    c = { 'title': 'FlashBox',
+          'form': form }
     c.update(csrf(request))
     return render_to_response('home', c)
+
+class test:
+    pass
 
 def view_cards(request, url):
     """ Searches the database for a particular
         url which corresponds to their cards and
         renders them. """
-    pass
+    _test = test()
+    _test.text = "lorem ipsum <> | ^@#$*() : { : & : } ()"
+    c = { 'title': 'View Cards',
+          'cards':  [_test, _test, _test] }
+    c.update(csrf(request))
+    return render_to_response('view_cards', c)

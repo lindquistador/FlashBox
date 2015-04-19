@@ -1,0 +1,18 @@
+{% extends "layout" %}
+
+{% block content %}
+  <h1>Your Index Cards:</h1>
+
+  <div id="cards_view">
+   
+    <div class="row">
+      {% for c in cards %}
+        <div class="single_card disabled btn btn-default col-lg-3 col-md-4 col-xs-6 thumb">
+          <p>{{ c.text|truncatechars:50 }}</p>
+        </div>
+      {% endfor %}
+    </div>
+
+  </div>
+
+{% endblock %}

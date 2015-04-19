@@ -145,7 +145,7 @@ fieldset[disabled] .btn-purple.active {
 
 /* custom CSS */
 
-#content, #upload, #about {
+#content, #upload, #about, #cards_view {
   margin-top: 50px;
 }
 
@@ -167,3 +167,16 @@ fieldset[disabled] .btn-purple.active {
   opacity: 0;
   filter: alpha(opacity=0);
 }
+
+/* cards styling */
+.thumb {
+  margin-bottom: 30px;
+}
+.single_card {
+  margin-left: 10px;
+  margin-right: 10px;
+  height: 10em;
+}
+.btn-default {
+  white-space: normal;
+};
