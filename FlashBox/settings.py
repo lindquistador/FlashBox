@@ -104,6 +104,11 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+FILE_UPLOAD_HANDLERS =  (
+    "django.core.files.uploadhandler.MemoryFileUploadHandler",
+    "django.core.files.uploadhandler.TemporaryFileUploadHandler",
+)
+
 ROOT_URLCONF = 'FlashBox.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.

@@ -5,7 +5,7 @@
   
   <div id="upload">
     <p class="lead">Upload a word document here: </p>  
-    <form action="/" method="post">{% csrf_token %}
+    <form action="/" method="post" enctype="multipart/form-data">{% csrf_token %}
       
       <div class="row">
           <input id="upload_file" placeholder="Choose File" disabled="disabled" />

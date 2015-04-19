@@ -2,25 +2,32 @@ from django.http import Http404
 from django.shortcuts import render_to_response
 from django.core.context_processors import csrf
 from .forms import UploadFileForm
+from .parsefunc import flash
 
 import sqlite3 as lite
-import sys
-
 import hashlib
+import sys
 
 def home(request):
     """ Handles the home page and the upload handling. """
     if request.method == 'POST':
-        form = UploadFileForm(request.FILES)
+        form = UploadFileForm(request.POST, request.FILES)
         print form
         if form.is_valid():
+            if not request.FILES['file'].name.endswith(".docx") or \
+               not request.FILES['file'].name.endswith(".doc"):
+                   # TODO: throw error here
+                   pass
             url = handle_uploaded_file(request.FILES['file'])
             return HttpResponseRedirect('/'+url)
+        # if failed, form should fall through with custom error
     else:
         form = UploadFileForm()
+        print form
     c = { 'title': 'FlashBox',
           'form': form }
     c.update(csrf(request))
+    # TODO: display form error
     return render_to_response('home', c)
 
 def view_cards(request, url):
@@ -41,11 +48,7 @@ def handle_uploaded_file(f):
 
     with con:
         cur  = con.cursor()
-
         array = flash(f)
-        assert (len(array) >= 0), "Array is empty!!!"
-        print array
-
         counter = 0;
 
         for i in range(len(array)):
