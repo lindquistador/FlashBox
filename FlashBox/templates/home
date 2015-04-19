@@ -26,6 +26,15 @@
     <p class="lead">
       FlashBox provides an easy way of quickly formatting your document of vocabulary words to automatically generate flash cards.  Simply follow the annotation method, and FlashBox does the parsing. Then click on the link generated and view information in the traditional index card format.  Future features will include a way of viewing multiple sets of flashcards and a method for downloading the flashcards.
     </p>
+    <h3>Word Document Formatting Example</h3>
+    <p class="lead">
+    The '&' denotes the term and the ':' denotes the Definition.<br/>
+    Make sure to end files with an &.<br/>
+    &Term: Definition<br/>
+    &Term: Definition&<br/>
+
+    </p>
+
   </div>
 
   <script type="text/javascript">
