@@ -3,11 +3,10 @@ from django.shortcuts import render_to_response
 from django.core.context_processors import csrf
 from .forms import UploadFileForm
 
-def handle_uploaded_file(f):
-    """ Helper function for home.
-        Sends the file to the database after parsing
-        and returns the automagically generated url """
-    pass
+import sqlite3 as lite
+import sys
+
+import hashlib
 
 def home(request):
     """ Handles the home page and the upload handling. """
@@ -15,6 +14,7 @@ def home(request):
         form = UploadFileForm(request.POST, request.FILES)
         if form.is_valid():
             url = handle_uploaded_file(request.FILES['file'])
+            print url
             return HttpResponseRedirect('/'+url)
     else:
         form = UploadFileForm()
@@ -31,3 +31,46 @@ def view_cards(request, url):
           'cards':  None }
     c.update(csrf(request))
     return render_to_response('view_cards', c)
+
+def handle_uploaded_file(f):
+    """ Helper function for home.
+        Sends the file to the database after parsing
+        and returns the automagically generated url """
+
+    con = lite.connect('db.db')
+
+    with con:
+        cur  = con.cursor()
+
+        array = flash(f)
+        assert (len(array) >= 0), "Array is empty!!!"
+        print array
+
+        counter = 0;
+
+        for i in range(len(array)):
+            if i == 0:
+                title = array[i]
+                i += 1
+            for j in range(len(array[i])):
+                counter += 1
+                cur.execute("INSERT INTO Cards (Key)")
+                cur.execute("VALUES ({})".format(array[i][j]))
+                #INSERT INTO Cards (Key)
+                #VALUES (array[i][j])
+                j += 1
+                cur.execute("INSERT INTO Cards (Info, Index)")
+                cur.execute("VALUES ({0}, {1})".format(array[i][j], counter))
+                #INSERT INTO Cards (Info, Index)
+                #VALUES (array[i][j], counter)
+
+        cur.execute("INSERT INTO Flashcards (Title, Total_cards)")
+        cur.execute("VALUES ({0}, {1}".format(title, counter))
+        #INSERT INTO Flashcards (Title, Total_cards)
+        #VALUES (title, counter)
+        cur.excute("INSERT INTO Flashcards SELECT * FROM Cards")
+        #INSERT INTO Flashcards SELECT * FROM Cards
+        #Do I need to put in a VALUES line????
+
+    hash_object = hashlib.md5(b'{0}{1}{2}'.format(title, array[1][0], array[1][1]))
+    return hash_object
