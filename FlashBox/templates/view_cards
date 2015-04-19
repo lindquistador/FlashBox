@@ -3,16 +3,63 @@
 {% block content %}
   <h1>{{ flash_card_set_title }}</h1>
 
+  <!-- default is hidden so we don't see the answers -->
+  <div class="btn btn-default" id="individual_card" visibility="hidden"></div>
+  
   <div id="cards_view">
    
     <div class="row">
       {% for c in cards %}
-        <div class="single_card disabled btn btn-default col-lg-3 col-md-4 col-xs-6 thumb">
-          <p>{{ c.key|truncatechars:20 }}<br>{{ c.info|truncatechars:20 }}</p>
+        <div class="single_card btn btn-default col-lg-3 col-md-4 col-xs-6 thumb">
+          <p>{{ c.key|truncatechars:50 }}</p>
         </div>
       {% endfor %}
     </div>
 
   </div>
+
+  <script type="text/javascript">
+    // for use by our special effects for the note pages
+    // still no jQuery in sight
+   
+    // this was a map once upon a time...
+    var card_map = [
+      {% for c in cards %}
+        [ '{{ c.key }}', '{{ c.info }}' ],
+      {% endfor %}
+    ]
+ 
+    var answer_showing = false;
+
+    var cards = document.getElementsByClassName('single_card');
+    for(var i = 0, len = cards.length; i < len; ++i) {
+      (function (index) {
+        cards[index].onclick = function () {
+  
+          // we make the "card" visible and populate it with question
+          var current_card = document.getElementById('individual_card');
+          current_card.innerHTML = "" + (index+1) + ": " + card_map[index][0]; // casts to string?
+          current_card.style.visibility = 'visible';
+          answer_showing = false;
+
+        };
+      })(i);
+    }
+
+    // when individual card is visible and clicked, we flip
+    document.getElementById('individual_card').onclick = function () {
+      // TOOD: animation
+      if(answer_showing === false) { // transitioning to answer
+        var index = this.innerHTML;
+        index = index.replace(/(^\d+)(.+$)/i,'$1'); // matches first number
+        this.innerHTML = "" + index + ": " + card_map[parseInt(index, 10)-1][1];
+        answer_showing = true;
+      } else {
+        answer_showing = false;
+        this.style.visibility = 'hidden';
+      }
+    }
+
+  </script>
 
 {% endblock %}
