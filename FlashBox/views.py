@@ -23,16 +23,11 @@ def home(request):
     c.update(csrf(request))
     return render_to_response('home', c)
 
-class test:
-    pass
-
 def view_cards(request, url):
     """ Searches the database for a particular
         url which corresponds to their cards and
         renders them. """
-    _test = test()
-    _test.text = "lorem ipsum <> | ^@#$*() : { : & : } ()"
-    c = { 'title': 'View Cards',
-          'cards':  [_test, _test, _test] }
+    c = { 'title': 'View Your Cards',
+          'cards':  None }
     c.update(csrf(request))
     return render_to_response('view_cards', c)
