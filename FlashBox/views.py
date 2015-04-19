@@ -11,10 +11,10 @@ import hashlib
 def home(request):
     """ Handles the home page and the upload handling. """
     if request.method == 'POST':
-        form = UploadFileForm(request.POST, request.FILES)
+        form = UploadFileForm(request.FILES)
+        print form
         if form.is_valid():
             url = handle_uploaded_file(request.FILES['file'])
-            print url
             return HttpResponseRedirect('/'+url)
     else:
         form = UploadFileForm()
