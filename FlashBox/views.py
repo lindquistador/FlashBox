@@ -1,10 +1,10 @@
 from django.http import Http404
 from django.shortcuts import render_to_response
 from django.core.context_processors import csrf
+from django.http import HttpResponseRedirect
 from .forms import UploadFileForm
 from .parsefunc import flash
 
-import sqlite3 as lite
 import hashlib
 import sys
 
@@ -44,36 +44,14 @@ def handle_uploaded_file(f):
         Sends the file to the database after parsing
         and returns the automagically generated url """
 
-    con = lite.connect('db.db')
 
-    with con:
-        cur  = con.cursor()
-        array = flash(f)
-        counter = 0;
+    array = flash(f)
+    counter = 0;
 
-        for i in range(len(array)):
-            if i == 0:
-                title = array[i]
-                i += 1
-            for j in range(len(array[i])):
-                counter += 1
-                cur.execute("INSERT INTO Cards (Key)")
-                cur.execute("VALUES ({})".format(array[i][j]))
-                #INSERT INTO Cards (Key)
-                #VALUES (array[i][j])
-                j += 1
-                cur.execute("INSERT INTO Cards (Info, Index)")
-                cur.execute("VALUES ({0}, {1})".format(array[i][j], counter))
-                #INSERT INTO Cards (Info, Index)
-                #VALUES (array[i][j], counter)
-
-        cur.execute("INSERT INTO Flashcards (Title, Total_cards)")
-        cur.execute("VALUES ({0}, {1}".format(title, counter))
-        #INSERT INTO Flashcards (Title, Total_cards)
-        #VALUES (title, counter)
-        cur.excute("INSERT INTO Flashcards SELECT * FROM Cards")
-        #INSERT INTO Flashcards SELECT * FROM Cards
-        #Do I need to put in a VALUES line????
-
+    title = array[0]
+    for i in range(1, len(array)):
+        key = array[i][0]
+        definition = array[i][1]
+       
     hash_object = hashlib.md5(b'{0}{1}{2}'.format(title, array[1][0], array[1][1]))
     return hash_object

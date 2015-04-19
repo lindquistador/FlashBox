@@ -1,6 +1,7 @@
 # Django settings for FlashBox project.
 
 import os
+import mongoengine
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -13,14 +14,8 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(
-                    os.path.dirname(
-                            os.path.realpath(__file__)
-                    ),
-                    'db'
-                ),
-    }
+        'ENGINE': ''
+    },
 }
 
 # Local time zone for this installation. Choices can be found here:
@@ -132,7 +127,6 @@ INSTALLED_APPS = (
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
-    'flashcards',
 )
 
 # A sample logging configuration. The only tangible logging
